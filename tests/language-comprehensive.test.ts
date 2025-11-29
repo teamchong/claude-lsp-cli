@@ -86,6 +86,13 @@ const LANGUAGES = [
     cleanCode: `resource "aws_instance" "example" {\n  instance_type = "t2.micro"\n  ami           = "ami-12345678"\n}\n`,
     expectedError: /Formatting issues|warning/, // Terraform fmt only detects formatting issues
   },
+  {
+    name: 'Zig',
+    exts: ['.zig'],
+    errorCode: `const std = @import("std");\npub fn main() void {\n    const unused: i32 = 42;\n    std.debug.print("Hello\\n", .{});\n}`,
+    cleanCode: `const std = @import("std");\npub fn main() void {\n    std.debug.print("Hello\\n", .{});\n}`,
+    expectedError: /unused local constant|error/,
+  },
 ];
 
 describe('Language Comprehensive Testing', () => {
