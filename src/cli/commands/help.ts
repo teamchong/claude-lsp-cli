@@ -45,6 +45,7 @@ export async function showStatus(
     if (config.disableLua === true) disabledLanguages.add('Lua');
     if (config.disableElixir === true) disabledLanguages.add('Elixir');
     if (config.disableTerraform === true) disabledLanguages.add('Terraform');
+    if (config.disableZig === true) disabledLanguages.add('Zig');
   } catch {
     // Ignore config parsing errors
   }
@@ -124,6 +125,13 @@ Current Status:
       command: 'terraform',
       versionArg: 'version',
       install: 'Install Terraform',
+    },
+    {
+      name: 'Zig',
+      code: 'zig',
+      command: 'zig',
+      versionArg: 'version',
+      install: 'Install Zig from https://ziglang.org',
     },
   ];
 
